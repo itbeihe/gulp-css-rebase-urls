@@ -1,0 +1,17 @@
+.something {
+  background: url("http://test.com/build/static/core/core.png") no-repeat top left;
+}
+
+.absolute {
+  background: url("http://test.com/build/static/style.png") no-repeat top left;
+}
+
+.static {
+  background: url("http://test.com/static/style.png") no-repeat top left;
+}
+
+z
+@font-face {
+  font-family: pictos;
+  src: url("http://test.com/build/static/font.ttf");
+}

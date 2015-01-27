@@ -1,5 +1,5 @@
 # gulp-css-rebase-urls
-重构css中静态资源的相对地址为静态地址
+重构css中静态资源的相对地址为静态地址,并把相对路径提取出来
 
 ## 安装
 
@@ -14,18 +14,19 @@ npm install gulp-css-rework-url --save-dev
 ```javascript
 var gulp = require('gulp');
 var cssReworkUrls = require('gulp-css-rework-url');
-
+var sfiles;
 gulp.task('test1',function(){
     gulp.src('./test-1.css')
         .pipe(cru({
-            staticRoot:'http://test.com/'
+            prefix:'http://test.com/build/'       // 静态路径前缀,如"/build/","http://test.com"
         },function(files){
             // 取出css中间的使用的静态文件
             console.log(files);
-            //sfiles = files;
+            sfiles = files;
         })).pipe(gulp.dest('./style/')).on('end',function(){
+            //  这里可以处理css中出现的图片,字体,如迁移位置.
+            console.log(sfiles);
             gutil.log('exec css end！');
-            // 这里可以对css中的url进行,比如路径迁移等等
         })
 });
 ```

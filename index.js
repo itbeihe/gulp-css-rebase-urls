@@ -20,27 +20,24 @@ var rebaseUrls = function(css, options,reworkConf) {
                 return url;
             }
 
-            var absolutePath;
-            if(!isAbsolute(url)){
-                absolutePath = path.join(options.root, url);
+            var absolutePath,relativePath,endPath;
 
+            if(isAbsolute(url)){
+                absolutePath = path.join(options.root, url);
             }else{
                 absolutePath = path.join(options.currentDir, url);
-
             }
-            console.log('ap',absolutePath);
-            var p = path.relative(options.root, absolutePath);
-            var endPath = p;
-            if(options.domain){
-                endPath = nulr.resolve(options.domain,p);
-                console.log('ep',endPath);
+            // 获取静态文件相对根目录(gulpfile文件目录)的相对路径
+            relativePath = path.relative(options.root, absolutePath);
+            sfiles.push(relativePath);
+            if(options.prefix){
+                endPath = nulr.resolve(options.prefix,relativePath);
             }else{
-                endPath = '/'+p;
+                endPath = '/'+relativePath;
             }
             if (process.platform === 'win32') {
                 endPath = endPath.replace(/\\/g, '/');
             }
-            sfiles.push(p);
             return endPath;
         }))
         .toString(reworkConf);
@@ -48,20 +45,18 @@ var rebaseUrls = function(css, options,reworkConf) {
 
 module.exports = function(options,callback) {
     options = options || {};
-    var root = options.root || '.';
-
     return through.obj(function(file, enc, cb) {
         try{
             var css = rebaseUrls(file.contents.toString(), {
                 currentDir: path.dirname(file.path),
-                root: path.join(file.cwd, root),
-                domain:options.domain
+                root: path.join(file.cwd, '.'),
+                prefix:options.prefix
             },options);
             file.contents = new Buffer(css);
             this.push(file);
             cb();
         }catch(e){
-            var err = new gutil.PluginError('gulp-rework', 'rework css file '+ file.path +' error');
+            var err = new gutil.PluginError('gulp-css-rework-url', 'rework css file '+ file.path +' error');
             cb(err);
         }
     },function(cb){
