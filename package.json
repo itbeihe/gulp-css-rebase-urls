@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/itbeihe/gulp-css-rebase-urls/issues"
   },
-  "homepage": "https://github.com/itbeihe/gulp-css-rebase-urls",
+  "homepage": "https://github.com/itbeihe/gulp-css-rebase-url",
   "dependencies": {
     "rework": "^1.0.1",
     "rework-plugin-url": "^1.0.1",
