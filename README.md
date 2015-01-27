@@ -1,7 +1,7 @@
 # gulp-css-rebase-urls
 重构css中静态资源的相对地址为静态地址,并把相对路径提取出来
 
-[![NPM version]][npm-url]
+[![NPM version][npm-image]][npm-url]
 
 ## 安装
 
