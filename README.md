@@ -1,7 +1,7 @@
 # gulp-css-rebase-urls
 重构css中静态资源的相对地址为静态地址,并把相对路径提取出来
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+[![NPM version][npm-image]][npm-url]
 
 ## 安装
 
@@ -88,4 +88,5 @@ main.css = core.css + style.css
 }
 ```
 
-
+[npm-url]: https://npmjs.org/package/gulp-css-rework-url
+[npm-image]: http://img.shields.io/npm/v/gulp.svg
