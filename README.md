@@ -15,7 +15,7 @@ npm install gulp-css-rework-url --save-dev
 
 ```javascript
 var gulp = require('gulp');
-var cssReworkUrls = require('gulp-css-rework-url');
+var cru = require('gulp-css-rework-url');
 var sfiles;
 gulp.task('test1',function(){
     gulp.src('./test-1.css')
