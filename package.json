@@ -1,6 +1,6 @@
 {
   "name": "gulp-css-rework-url",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "rework css font and img url",
   "main": "index.js",
   "scripts": {
