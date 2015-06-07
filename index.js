@@ -12,7 +12,7 @@ var isAbsolute = function(p) {
 };
 
 var sfiles = [];
-var base64Reg = /^data[:].*[;]base64[,]/
+var base64Reg = /^data[:].*[;]base64[,]/;
 
 var rebaseUrls = function(css, options,reworkConf) {
     return rework(css)
