@@ -17,7 +17,7 @@ var base64Reg = /^data[:].*[;]base64[,]/;
 var rebaseUrls = function(css, options,reworkConf) {
     return rework(css)
         .use(rurl(function(url){
-            if ( validator.isURL(url) || base64Reg.test(url)) {
+            if ( base64Reg.test(url)) {
                 return url;
             }
 
